@@ -98,6 +98,10 @@ if test $(grep "^ID=" /etc/*-release | awk -F '=' '{print $2}') = "arch"; then
 	alias pacmir='sudo pacman -Syy'                    # Force refresh of all package lists after updating /etc/pacman.d/mirrorlist
 fi
 
+if test -f "${HOME}/Projects/gists/scripts-general/svnvimdiffwrap"; then
+	alias vimsvndiff='svn diff --diff-cmd ~/Dropbox/scripts/svnvimdiffwrap'
+fi
+
 # Vi keyboard bindings in zsh
 #bindkey -v
 #bindkey ‘^R’ history-incremental-search-backward
