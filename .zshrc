@@ -66,11 +66,13 @@ export HISTCONTROL=ignoredups
 export HISTIGNORE="pwd:ls:ls -l:ls -ltr:history -w"
 setopt histignorealldups
 
-export GVFS="/run/user/${UID}/gvfs/"
-export CONFIGCF="$GVFS/sftp:host=config.local,user=server-config/home/server-config/catalina.base/CoDriver/ClientFiles/0.0.0/"
-export PRODMAINCF="$GVFS/sftp:host=server.codriver.com,user=server-main/home/server-main/catalina.base/CoDriver/ClientFiles/0.0.0/"
+if test -e "/run/user/${UID}/gvfs"; then
+	export GVFS="/run/user/${UID}/gvfs/"
+	export CONFIGCF="$GVFS/sftp:host=config.local,user=server-config/home/server-config/catalina.base/CoDriver/ClientFiles/0.0.0/"
+	export PRODMAINCF="$GVFS/sftp:host=server.codriver.com,user=server-main/home/server-main/catalina.base/CoDriver/ClientFiles/0.0.0/"
+fi
 
-if test $(grep "^ID=" /etc/*-release | awk -F '=' '{print $2}') == "arch"; then
+if test $(grep "^ID=" /etc/*-release | awk -F '=' '{print $2}') = "arch"; then
 	# Pacman alias examples
 	alias pacupg='sudo pacman -Syu'		# Synchronize with repositories and then upgrade packages that are out of date on the local system.
 	alias pacin='sudo pacman -S'		# Install specific package(s) from the repositories
