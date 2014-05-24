@@ -1,3 +1,15 @@
+# Install oh-my-zsh
+# -- Automatic --
+# $ curl -L http://install.ohmyz.sh | sh
+# or
+# $ wget --no-check-certificate http://install.ohmyz.sh -O - | sh
+# -- Manual --
+# $ git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+# $ ln -s <this file> ~/.zshrc
+# link custom themes and plugins in .oh-my-zsh/custom/(plugins|themes)
+# $ chsh -s /bin/zsh
+
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
