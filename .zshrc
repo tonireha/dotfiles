@@ -84,7 +84,8 @@ if test -e "/run/user/${UID}/gvfs"; then
 	export PRODMAINCF="$GVFS/sftp:host=server.codriver.com,user=server-main/home/server-main/catalina.base/CoDriver/ClientFiles/0.0.0/"
 fi
 
-if test $(grep "^ID=" /etc/*-release | awk -F '=' '{print $2}') = "arch"; then
+# pacman aliases if pacman is installed
+if test $(command -v pacman); then
 	# Pacman alias examples
 	alias pacupg='sudo pacman -Syu'		# Synchronize with repositories and then upgrade packages that are out of date on the local system.
 	alias pacin='sudo pacman -S'		# Install specific package(s) from the repositories
