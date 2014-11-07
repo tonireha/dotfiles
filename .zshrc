@@ -112,7 +112,7 @@ if test $(command -v pacman); then
 fi
 
 if test -f "${HOME}/Projects/gists/scripts-general/svnvimdiffwrap"; then
-	alias vimsvndiff='svn diff --diff-cmd ~/Dropbox/scripts/svnvimdiffwrap'
+	alias vimsvndiff='svn diff --diff-cmd ${HOME}/Projects/gists/scripts-general/svnvimdiffwrap'
 fi
 
 # Vi keyboard bindings in zsh
