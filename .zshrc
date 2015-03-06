@@ -61,14 +61,13 @@ if [ -d $HOME/opt/android-sdk-linux ]; then
 fi
 
 # Customize to your needs...
-export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
-if [ -d $HOME/bin ]; then 
+if test -d $HOME/bin && test ! -z "${PATH##*${HOME}/bin*}"; then 
 	export PATH=$PATH:$HOME/bin
 fi
-if [ -d $ANDROID_HOME/platform-tools ]; then
+if test -d $ANDROID_HOME/platform-tools && test ! -z "${PATH##*${ANDROID_HOME}/platform-tools*}"; then
 	export PATH=$PATH:$ANDROID_HOME/platform-tools
 fi
-if [ -d $ANDROID_HOME/tools ]; then
+if test -d $ANDROID_HOME/tools && test ! -z "${PATH##*${ANDROID_HOME}/tools*}" ; then
 	export PATH=$PATH:$ANDROID_HOME/tools
 fi
 
