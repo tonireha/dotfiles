@@ -75,7 +75,9 @@ export TIME_STYLE=long-iso
 export XMLLINT_INDENT="	"
 export HISTCONTROL=ignoredups
 export HISTIGNORE="pwd:ls:ls -l:ls -ltr:history -w"
+export HISTSIZE=10000
 setopt histignorealldups
+setopt HIST_IGNORE_ALL_DUPS
 
 if test -e "/run/user/${UID}/gvfs"; then
 	export GVFS="/run/user/${UID}/gvfs/"
