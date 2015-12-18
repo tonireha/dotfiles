@@ -11,7 +11,7 @@
 
 
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+ZSH=${HOME}/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -54,21 +54,25 @@ DISABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(ant colored-man colorize command-not-found cp git jira svn-fast-info-mod screen)
 
-source $ZSH/oh-my-zsh.sh
+source "${ZSH}/oh-my-zsh.sh"
 
-if [ -d $HOME/opt/android-sdk-linux ]; then
-	export ANDROID_HOME=$HOME/opt/android-sdk-linux
+if [ -d "${HOME}/opt/android-sdk-linux" ]; then
+	export ANDROID_HOME=${HOME}/opt/android-sdk-linux
+fi
+
+if test -d "${HOME}/opt/billiant"; then
+	export BILLIANT_HOME=${HOME}/opt/billiant
 fi
 
 # Customize to your needs...
-if test -d $HOME/bin && test ! -z "${PATH##*${HOME}/bin*}"; then 
-	export PATH=$PATH:$HOME/bin
+if test -d "${HOME}/bin" && test ! -z "${PATH##*${HOME}/bin*}"; then 
+	export PATH=${PATH}:${HOME}/bin
 fi
-if test -d $ANDROID_HOME/platform-tools && test ! -z "${PATH##*${ANDROID_HOME}/platform-tools*}"; then
-	export PATH=$PATH:$ANDROID_HOME/platform-tools
+if test -d "${ANDROID_HOME}/platform-tools" && test ! -z "${PATH##*${ANDROID_HOME}/platform-tools*}"; then
+	export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 fi
-if test -d $ANDROID_HOME/tools && test ! -z "${PATH##*${ANDROID_HOME}/tools*}" ; then
-	export PATH=$PATH:$ANDROID_HOME/tools
+if test -d "${ANDROID_HOME}/tools" && test ! -z "${PATH##*${ANDROID_HOME}/tools*}" ; then
+	export PATH=${PATH}:${ANDROID_HOME}/tools
 fi
 
 export TIME_STYLE=long-iso
@@ -81,12 +85,12 @@ setopt HIST_IGNORE_ALL_DUPS
 
 if test -e "/run/user/${UID}/gvfs"; then
 	export GVFS="/run/user/${UID}/gvfs/"
-	export CONFIGCF="$GVFS/sftp:host=config.local,user=server-config/home/server-config/catalina.base/CoDriver/ClientFiles/0.0.0/"
-	export PRODMAINCF="$GVFS/sftp:host=server.codriver.com,user=server-main/home/server-main/catalina.base/CoDriver/ClientFiles/0.0.0/"
+	export CONFIGCF="${GVFS}/sftp:host=config.local,user=server-config/home/server-config/catalina.base/CoDriver/ClientFiles/0.0.0/"
+	export PRODMAINCF="${GVFS}/sftp:host=server.codriver.com,user=server-main/home/server-main/catalina.base/CoDriver/ClientFiles/0.0.0/"
 fi
 
 # pacman aliases if pacman is installed
-if test $(command -v pacman); then
+if test "$(command -v pacman)"; then
 	# Pacman alias examples
 	alias pacupg='sudo pacman -Syu'		# Synchronize with repositories and then upgrade packages that are out of date on the local system.
 	alias pacin='sudo pacman -S'		# Install specific package(s) from the repositories
