@@ -52,7 +52,13 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ant colored-man colorize command-not-found cp git jira svn-fast-info-mod screen)
+
+if test $(command -v svn); then
+	# Only load the svn plugin if we have svn installed
+	plugins=(ant colored-man colorize command-not-found cp git jira svn-fast-info-mod screen)
+else
+	plugins=(ant colored-man colorize command-not-found cp git jira screen)
+fi
 
 source "${ZSH}/oh-my-zsh.sh"
 
@@ -120,6 +126,9 @@ if test -f "${HOME}/Projects/gists/scripts-general/svnvimdiffwrap"; then
 	alias vimsvndiff='svn diff --diff-cmd ${HOME}/Projects/gists/scripts-general/svnvimdiffwrap'
 fi
 
+if grep -q ID=arch /etc/os-release; then 
+	export VISUAL="vim"
+fi
 # Vi keyboard bindings in zsh
 #bindkey -v
 #bindkey ‘^R’ history-incremental-search-backward
