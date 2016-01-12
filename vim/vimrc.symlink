@@ -1,4 +1,51 @@
-syntax on
+" Vim5 and later versions support syntax highlighting. 
+if has("syntax")
+	syntax on
+endif
+" what is this?
+set keywordprg=trs\ {sv=es}
+" Copy indent from current line when starting a new line (typing <CR>, o or O commands)
+set autoindent 
+" Indent automatically for recognized languages
+set smartindent
+" More sane tab display settings than default 8 for files with lots of indent
+set tabstop=4
+set shiftwidth=4
+" Don't instert spaces instead of tab (actually the default setting, just making the concious choice)
+set noexpandtab
+" When a file has been detected to have been changed outside of VIM and not in vim, auto read again
+set autoread
+" Find matches as you type
+set incsearch
+" Highlight matches when you search
+set hlsearch
+" When insterting a bracket (any bracket?) briefly jump to the matching one
+set showmatch
+" Show line and column number of cursor position
+set ruler
+" Use filetype plugins
+filetype plugin on
+" Load pathogen runtimepath manager (for easier plugin and runtime files
+" installation)
+execute pathogen#infect()
+" syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()} " syntastic-statusline-flag
+set statusline+=%{fugitive#statusline()}     " fugitive (git) current branch indicator
+set statusline+=%*
+" swp settings 
+" two trailing slashes = avoid collisions by create swap files using the whole file path
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+" diff mode ignore whitespace
+if &diff
+	set diffopt+=iwhite
+endif
 
-" Wrap gitcommit file types at the appropriate length
-filetype indent plugin on
+let g:syntastic_always_populate_loc_list = 1 " automatically populate the location list with errors detected by syntastic
+let g:syntastic_auto_loc_list = 1 " the error window will be automatically opened when errors are detected, and closed when none are detected.
+let g:syntastic_check_on_open = 1 " run syntax check when loading buffers
+let g:syntastic_check_on_wq = 0 " don't run syntax check when writing to disk
+
+
