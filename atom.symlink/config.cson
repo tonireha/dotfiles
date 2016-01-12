@@ -1,39 +1,17 @@
 "*":
-  editor:
-    showIndentGuide: true
-    fontFamily: "Menlo"
-    invisibles: {}
-    fontSize: 15
-    softWrapAtPreferredLineLength: true
-  core:
-    ignoredNames: [
-      ".bundle"
-      ".git"
-      "log"
-      "repositories"
-      "tmp"
-      "vendor"
-    ]
-    themes: [
-      "unity-ui"
-      "glacier-syntax"
-    ]
-    hideGitIgnoredFiles: true
-    disabledPackages: [
-      "background-tips"
-      "exception-reporting"
-      "metrics"
-    ]
-    followSymlinks: false
-  "spell-check":
-    grammars: [
-      "text.plain"
-      "source.gfm"
-      "text.git-commit"
-    ]
+  "exception-reporting":
+    userId: "550658de-fac8-8a62-871a-4f3e25cfeebf"
   welcome:
     showOnStartup: false
-  "release-notes":
-    viewedVersion: "0.89.0"
-  "go-plus":
-    goPath: "/Users/holman/Code/go"
+  core:
+    themes: [
+      "one-dark-ui"
+      "solarized-dark-syntax"
+    ]
+  editor:
+    invisibles: {}
+    fontSize: 13
+  linter: {}
+  "xml-formatter": {}
+  "spell-check": {}
+  "linter-shellcheck": {}
